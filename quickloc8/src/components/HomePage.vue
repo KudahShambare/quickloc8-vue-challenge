@@ -1,37 +1,59 @@
-
-
 <template>
- <div id="loading" ref="loading"> 
- <img alt="Oooops" src="../assets/quickloc8.svg"/>
- <h3> Loading.....</h3>
- <vue-loaders-ball-beat/>
- </div>
+  <div id="loading" ref="loading">
+    <img alt="Oooops" src="../assets/quickloc8.svg" />
+    <h3>Loading.....</h3>
+  </div>
+  <div id="mapping" ref="mapping"></div>
 </template>
 
 <script>
-//import loaders from npm
-
-
+import { Loader } from '@googlemaps/js-api-loader';
 
 export default {
-  name: 'HomePage',
- 
 
-  mounted(){
-  const load = this.$refs.loading;
-  console.log(load);
-  setTimeout(()=>{
-    load.style.display="none";
-  },3500)
-  }
+  name: "HomePage",
+
+  mounted() {
 
 
-}
 
+
+    /*Loader Disapper*/
+    const load = this.$refs.loading;
+    setTimeout(() => {
+      load.style.display = "none";
+      const loader = new Loader({
+  apiKey: "AIzaSyDltxY3QD3xHuQYknWp0qOybaA4RVBH6Hk",
+
+});
+const mapOptions = {
+  center: {
+    lat: -33.8,
+    lng: 18.8
+  },
+  zoom: 10
+};
+loader.load().then((google) => {
+    new google.maps.Map(this.$refs.mapping, mapOptions);
+  })
+  .catch(e => {
+  console.log(e)
+  });
+    }, 3500);
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#mapping{
+  position:absolute;
+  top:0;
+  left:0;
+  height:100vh;
+  width:100vw;
+  background-color:"black";
+}
 h3 {
   margin: 40px 0 0;
 }
