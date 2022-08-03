@@ -46,14 +46,14 @@ const createData=(val)=>{
    
     //message icon style
        msgIcon.style.borderRadius="50%";
-        msgIcon.style.height="5rem";
-        msgIcon.style.marginTop="10%";
+        msgIcon.style.height="auto";
+        msgIcon.style.width="auto";
+        msgIcon.style.marginTop="40%";
         msgIcon.style.paddingTop="30%";
         msgIcon.style.fontSize="x-large";
         msgIcon.style.fontWeight="bolder";
         msgIcon.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
         msgIcon.style.width="10vw";
-
 
        msgImg.appendChild(msgIcon)
        //message content
