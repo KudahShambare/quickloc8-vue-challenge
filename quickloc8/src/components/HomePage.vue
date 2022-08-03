@@ -13,6 +13,8 @@
 
 <script>
 import { Loader } from "@googlemaps/js-api-loader";
+import taxi from "../assets/taxi.png";
+import vehicleLocations from "../vehicleCoordinates.json";
 
 export default {
   name: "HomePage",
@@ -39,10 +41,23 @@ export default {
       zoom: 10,
       libraries: ["places"],
     };
+
     loader
       .load()
       .then((google) => {
-        new google.maps.Map(mapping, mapOptions);
+        const map = new google.maps.Map(mapping, mapOptions);
+        vehicleLocations.forEach((vloc)=>{
+
+   new google.maps.Marker({
+          position: { lat:parseFloat(vloc.latitude), lng:parseFloat(vloc.longitude) },
+          map,
+          icon:{
+            url:taxi,
+            scaledSize: new google.maps.Size(25, 25)
+          }
+        });
+        })
+     
       })
       .catch((e) => {
         console.log(e);
