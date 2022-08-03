@@ -1,16 +1,17 @@
 <template>
- 
+ <MyMessages/>
   <HomePage />
 </template>
 
 <script>
 import HomePage from './components/HomePage.vue'
-
+import MyMessages from './components/MyMessages.vue'
 
 export default {
   name: 'App',
   components: {
-    HomePage
+    HomePage,
+    MyMessages
   }
 
 }

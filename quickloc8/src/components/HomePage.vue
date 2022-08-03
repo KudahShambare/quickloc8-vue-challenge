@@ -31,7 +31,8 @@ const mapOptions = {
     lat: -33.8,
     lng: 18.8
   },
-  zoom: 10
+  zoom: 10,
+  libraries:["places"]
 };
 loader.load().then((google) => {
     new google.maps.Map(this.$refs.mapping, mapOptions);
@@ -48,11 +49,12 @@ loader.load().then((google) => {
 <style scoped>
 #mapping{
   position:absolute;
-  top:0;
+  top:100vh;
   left:0;
   height:100vh;
   width:100vw;
-  background-color:"black";
+ 
+  
 }
 h3 {
   margin: 40px 0 0;
